@@ -191,7 +191,6 @@ void searchBook()
 	int i;
 	printf("Enter Book Title to be Search: ");
 	gets(btitle);
-	printf("string : %s",btitle);
 	for(i=0;i<count;i++)
 	{
 		if(strcasecmp(book[i].title,btitle)==0)
