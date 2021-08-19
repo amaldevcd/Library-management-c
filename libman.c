@@ -3,7 +3,6 @@
 
 //Packages
 #include <stdio.h>
-#include<conio.h>
 #include<ctype.h>
 #include<string.h>
 #include <stdlib.h>
@@ -37,6 +36,7 @@ int size;        //Global Variable for Dynamic Memory Allocation
 //Main Function
 void main()
 {
+	char space;
 	printf("\t\t\t\tLIBRARY \n");
 
 	printf("  \n  ");
@@ -87,8 +87,8 @@ void main()
 	        printf("\tYou Entered The Wrong Choice");
 		  break;
 	  }
-	  printf("\n\t\t\t\tEnter any Key");
-    	 getch();
+	  printf("\n\t\t\t\t Press Enter to continue");
+    	 scanf("%c",&space);
  }while(1);
 	  
 }
@@ -194,7 +194,7 @@ void searchBook()
 	printf("string : %s",btitle);
 	for(i=0;i<count;i++)
 	{
-		if(stricmp(book[i].title,btitle)==0)
+		if(strcasecmp(book[i].title,btitle)==0)
 		{
 			//system("cls");
 			printf("\n\n\t\t######### Book Details ########");
@@ -224,7 +224,7 @@ void removeBook()
 	gets(btitle);
 	for(i=0;i<count;i++)
 	{
-		if(stricmp(book[i].title,btitle)==0)
+		if(strcasecmp(book[i].title,btitle)==0)
 		{
 			//stem("cls");
 			printf("\n\n\t\t ######## Remove Book Detail ########");
@@ -265,7 +265,7 @@ void removeBook()
   	gets(btitle);
   	 for(i =0; i<count;i++)
   	 {
-  	 	if(stricmp(book[i].title,btitle)==0)
+  	 	if(strcasecmp(book[i].title,btitle)==0)
   	 	{
   	 		//system("cls");
   	 		printf("\n\n\t\t ######## Book Detail ########");
