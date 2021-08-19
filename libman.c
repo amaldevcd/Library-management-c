@@ -16,6 +16,7 @@ void showAllBook();
 void searchBook();
 void removeBook();
 void updateBook();
+void userSearch();
 
 
 //Structure for Books
@@ -57,7 +58,7 @@ void main()
      do                                                   // to repeat
   {
 
-    //system("cls");
+    system("clear");
     printf("\n 1.Add Book \n 2.Show All Book \n 3.Search Book \n 4.Remove Book \n 5.Update Book \n 6.Rules\n 7.EXIT\n");		  
     printf("\nEnter your choice : ");
 	int choice;
@@ -152,7 +153,8 @@ void addBook()
 	gets(book[count].title);
 
 	printf("\n\t\t\t\tEnter Book Author : ");
-	//clean_stdin();
+
+
 	gets(book[count].author);
     printf("\n\t\t\t\tEnter Book Price :");
 	scanf("%f",&book[count].price);
@@ -167,7 +169,7 @@ void addBook()
  void showAllBook()
  {
  	int i;
- 	//system("cls");
+ 	system("clear");
  	printf("\n\n\t\t\t\t@@@@@@@@@@@@@@ Books Detail @@@@@@@@@@@");
  	printf("\n\n\t---------------------------------------------------------------------------------");
     printf("\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages");
@@ -197,7 +199,7 @@ void searchBook()
 	{
 		if(strcasecmp(book[i].title,btitle)==0)
 		{
-			//system("cls");
+			system("clear");
 			printf("\n\n\t\t######### Book Details ########");
 			printf("\n\n\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author : %s",book[i].author);
@@ -270,7 +272,7 @@ void removeBook()
   	 {
   	 	if(strcasecmp(book[i].title,btitle)==0)
   	 	{
-  	 		//system("cls");
+  	 		system("clear");
   	 		printf("\n\n\t\t ######## Book Detail ########");
 			printf("\n\n\t\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author  : %s",book[i].author);
