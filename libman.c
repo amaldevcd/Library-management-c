@@ -19,6 +19,7 @@ void updateBook();
 void userRegistration();
 void showAlluser();
 void takeBook();
+void searchUser();
 
 //Structure for Books
 typedef struct addBook
@@ -76,8 +77,7 @@ void main()
      do                                                   // to repeat
   {
 
-    //system("cls");
-    printf("\n 1.Add Book \n 2.Show All Book \n 3.Search Book \n 4.Remove Book \n 5.Update Book \n 6.Rules\n 7.user reg\n 8.showusers\n 9.Take Book\n");		  
+    printf("\n 1.Add Book \n 2.Show All Book \n 3.Search Book \n 4.Remove Book \n 5.Update Book \n 6.Rules\n 7.user reg\n 8.showusers\n 9.Take Book\n 10.Search User\n");		  
     printf("Enter your choice \n");
 	int choice;
 	scanf("%d",&choice);
@@ -110,13 +110,13 @@ void main()
 		     takeBook();
 		  break;	   		  	  	  	  
 	   case 10:
-	        return;			  	  	  	  
+	        searchUser();		  	  	  	  
 	  default:
 	        printf("\tYou Entered The Wrong Choice");
 		  break;
 	  }
 	  printf("\n\t\t\t\t Press Enter to continue");
-    	 scanf("%c",&space);
+    	scanf("%c",&space);
  }while(1);
 
 }
@@ -171,15 +171,15 @@ void rules()
 //Function to Add new Books
 void addBook()
 {
-	//system("cls");
+	system("clear");
 	printf("******Add New Book Detail******\n");
 
 	printf("Enter Book Title :\n");
-	fflush(stdin);
+	clean_stdin();
 	gets(book[countBook].title);
 
 	printf("Enter Book Author :\n");
-	fflush(stdin);
+	clean_stdin();
 	gets(book[countBook].author);
     printf("Enter Book Price :");
 	scanf("%f",&book[countBook].price);
@@ -194,7 +194,7 @@ void addBook()
  void showAllBook()
  {
  	int i;
- 	//system("cls");
+ 	system("clear");
  	printf("\n\n\t\t@@@@@@@@@@@@@@ Books Detail @@@@@@@@@@@");
  	printf("\n\n\t\t----------------------------------------");
     printf("\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages");
@@ -224,7 +224,7 @@ void searchBook()
 	{
 		if(strcasecmp(book[i].title,btitle)==0)
 		{
-			//system("cls");
+			system("clear");
 			printf("\n\n\t\t######### Book Details ########");
 			printf("\n\n\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author : %s",book[i].author);
@@ -255,7 +255,7 @@ void removeBook()
 	{
 		if(strcasecmp(book[i].title,btitle)==0)
 		{
-			//system("cls");
+			system("clear");
 			printf("\n\n\t\t ######## Remove Book Detail ########");
 			printf("\n\n\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author  : %s",book[i].author);
@@ -295,9 +295,9 @@ void removeBook()
   	gets(btitle);
   	 for(i =0; i<countBook;i++)
   	 {
-  	 	if(stricmp(book[i].title,btitle)==0)
+  	 	if(strcasecmp(book[i].title,btitle)==0)
   	 	{
-  	 		//system("cls");
+  	 		system("clear");
   	 		printf("\n\n\t\t ######## Book Detail ########");
 			printf("\n\n\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author  : %s",book[i].author);
@@ -310,7 +310,7 @@ void removeBook()
             gets(book[i].title);
             printf("\nEnter Book Author :");
 
-            fflush(stdin);
+            clean_stdin();
             gets(book[i].author);
             printf("\n Enter Book Price :");
             scanf("%f",&book[i].price);
@@ -328,7 +328,7 @@ void removeBook()
 //Function to show all users
 void userRegistration()
 {
-   //system("cls");
+   system("clear");
 	printf("******User Registration******\n");
 
 	printf("\nEnter the name of User :");
@@ -348,7 +348,7 @@ void userRegistration()
 void showAlluser()
 {
 	int i;
- 	//system("cls");
+ 	// system("clear");
  	printf("\n\n\t\t@@@@@@@@@@@@@@ User Detail @@@@@@@@@@@");
  	printf("\n\n\t\t----------------------------------------");
     printf("\n\t\t user name \t\t user phoneNO \t\t idno");
@@ -376,7 +376,7 @@ void takeBook()
 	clean_stdin();
 	gets(uname);
 	printf("\nEnter Library ID :");
-	scanf("%ld",id);
+	scanf("%ld",&id);
 	for(i=0;i<countUser;i++)
 	{
 		if(strcasecmp(user[i].name,uname)==0&&(user[i].idNo==id))
@@ -395,6 +395,31 @@ void takeBook()
 		}	
     }  
 
+}
+void searchUser()
+{
+	long num;
+	printf("Enter the cell Number : ");
+	scanf("%ld",&num);
+	for(int i=0;i<countUser;i++)
+	{
+		if(num==user[i].phoneNo)
+		{
+			printf("\n\n\t\t@@@@@@@@@@@@@@ User Detail @@@@@@@@@@@");
+		 	printf("\n\n\t\t----------------------------------------");
+		    printf("\n\t\t user name \t\t user phoneNO \t\t idno");
+		    printf("\n\n\t\t----------------------------------------\n");
+		    printf("\t\t %s",user[i].name);
+	    	printf("\t\t\t %ld",user[i].phoneNo);
+	    	printf("\t\t\t %ld",user[i].idNo);
+	    	break;
+		}
+		else
+		{
+			printf("User not found");
+		}
+
+	}
 }
 void clean_stdin()
 {
