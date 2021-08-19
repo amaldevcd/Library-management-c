@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 //Function Declaration
+void clean_stdin();
 void rules();
 void admin_Login();
 void addBook();
@@ -143,15 +144,15 @@ void rules()
 //Function to Add new Books
 void addBook()
 {
-	//system("cls");
+	system("clear");
 	printf("\n\t\t\t\t******Add New Book Detail******\n");
 
 	printf("\n\t\t\t\tEnter Book Title : ");
-	fflush(stdin);
+	clean_stdin();
 	gets(book[count].title);
 
 	printf("\n\t\t\t\tEnter Book Author : ");
-	fflush(stdin);
+	clean_stdin();
 	gets(book[count].author);
     printf("\n\t\t\t\tEnter Book Price :");
 	scanf("%f",&book[count].price);
@@ -280,7 +281,7 @@ void removeBook()
             gets(book[i].title);
             printf("\nEnter Book Author :");
 
-            fflush(stdin);
+            clean_stdin();
             gets(book[i].author);
             printf("\n Enter Book Price :");
             scanf("%f",&book[i].price);
@@ -296,3 +297,10 @@ void removeBook()
   	 }
   }
 
+void clean_stdin()
+{
+    int c;
+    do {
+        c = getchar();
+    } while (c != '\n' && c != EOF);
+}
