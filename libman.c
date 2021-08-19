@@ -153,7 +153,7 @@ void addBook()
 	gets(book[count].title);
 
 	printf("\n\t\t\t\tEnter Book Author : ");
-	clean_stdin();
+	// clean_stdin();
 	gets(book[count].author);
     printf("\n\t\t\t\tEnter Book Price :");
 	scanf("%f",&book[count].price);
