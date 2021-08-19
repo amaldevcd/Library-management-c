@@ -181,8 +181,9 @@ void searchBook()
 {
 	char btitle[10];
 	int i;
-	printf("Enter Book Title to be Search:\n");
+	printf("Enter Book Title to be Search: ");
 	gets(btitle);
+	printf("string : %s",btitle);
 	for(i=0;i<count;i++)
 	{
 		if(stricmp(book[i].title,btitle)==0)
@@ -192,10 +193,13 @@ void searchBook()
 			printf("\n\n\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author : %s",book[i].author);
 			printf("\n\t\t Book Price : %f",book[i].price);
-			printf("\n\t\t Bppk Page : %d",book[i].page);
+			printf("\n\t\t Book Page : %d",book[i].page);
 		}
 			
-		
+		else
+		{
+			printf("The above title book is not present \n");
+		}
 
 		
 	}
@@ -229,6 +233,11 @@ void removeBook()
 			count--;
 			return;
 
+		}
+
+		else
+		{
+			printf("The above title book is not present \n");
 		}
 	
 
@@ -271,6 +280,10 @@ void removeBook()
             scanf("%d",&book[i].page);
 
   	 	}
+		   else
+		{
+			printf("The above title book is not present \n");
+		}
   	 
   	 }
   }
