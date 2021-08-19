@@ -37,16 +37,16 @@ int size;        //Global Variable for Dynamic Memory Allocation
 //Main Function
 void main()
 {
-	printf("LIBRARY \n");
+	printf("\t\t\t\tLIBRARY \n");
 
 	printf("  \n  ");
-	printf("WELCOME\n");
-	printf("\n");
+	printf("\t\t\tWELCOME\n\n");
+	
 
 // calling of admin_Login() function     
 	admin_Login();                 
 
-	printf("\Enter Total NO. of Books you Want to Add in LIBRARY");
+	printf("Enter Total NO. of Books you Want to Add in LIBRARY : ");
 	     scanf("%d",&size);
 
  //Create Book Array Dynamic using size input by User
@@ -57,8 +57,8 @@ void main()
   {
 
     //system("cls");
-    printf("\n 1.Add Book \n 2.Show All Book \n 3.Search Book \n 4.Remove Book \n 5.Update Book");		  
-    printf("Enter your choice \n");
+    printf("\n 1.Add Book \n 2.Show All Book \n 3.Search Book \n 4.Remove Book \n 5.Update Book \n 6.Rules\n 7.EXIT\n");		  
+    printf("\nEnter your choice : ");
 	int choice;
 	scanf("%d",&choice);
 	  switch (choice)
@@ -79,11 +79,15 @@ void main()
 	        updateBook();
 	      break;
 	  case 6:
-	        rules();	  	  	  	  
+	        rules();
+		  break;	
+	  case 7:
+	        return;			  	  	  	  
 	  default:
-	        return;
+	        printf("\tYou Entered The Wrong Choice");
 		  break;
 	  }
+	  printf("\n\t\t\t\tEnter any Key");
     	 getch();
  }while(1);
 	  
@@ -100,55 +104,58 @@ void admin_Login()
 // List Rules to be followed in Libary
 void rules()
 {
-	printf(" LIBARY RULES AND REGULATIONS  \n");
+	printf("\t\t\t\t\tLIBARY RULES AND REGULATIONS  \n");
+	printf("\t\t\t\t---------------------------------\n");
 	printf("\n\n\n");
-	printf("  OPENING HOURS  \n");
+	printf("\t\t\t\t\t\tOPENING HOURS  \n");
 	printf("\n\n");
-	printf(" Monday - Friday  08:00AM to 10:00PM\n");
-	printf(" Saturday         09:00AM to 06:00PM\n");
-    printf(" The libary is closed on Sundays and all public holidays\n");
+	printf("\t\t\t\tMonday - Friday  08:00AM to 10:00PM\n");
+	printf("\t\t\t\tSaturday         09:00AM to 06:00PM\n");
+    printf("\t\t\tThe libary is closed on Sundays and all public holidays\n");
 	printf("\n\n");
-	printf("   DISCIPLINE  \n");
+	printf("\t\t\t\t\t\tDISCIPLINE  \n");
 	printf("\n\n");
-	printf(" All users must observe total silence in the library and its enviroment at all times");
-	printf(" All users are required to show their Library IDs to the security officer upon entrance to the library");
-	printf(" Use of mobiles phones is strictly prohibited in the library\n");
-	printf(" All bags,cases,folders etc. must be left in the luggage area outside the library.\n");
-	printf(" Users are not allowed to leave their baggage overnight in the library. The library shall not take any responsibility for loss of personal property or book already signed out to a user.\n");
+	printf("\tAll users must observe total silence in the library and its enviroment at all times\n");
+	printf("\tAll users are required to show their Library IDs to the security officer upon entrance to the library\n");
+	printf("\tUse of mobiles phones is strictly prohibited in the library\n");
+	printf("\tAll bags,cases,folders etc. must be left in the luggage area outside the library.\n");
+	printf("\tUsers are not allowed to leave their baggage overnight in the library. The library shall not take any responsibility for loss of personal property or book already signed out to a user.\n");
 	printf("\n\n");
-	printf("    DAMAGE/LOSS OF LIBRARY MATERIALS   \n");
+	printf("\t\t\t\t\tDAMAGE/LOSS OF LIBRARY MATERIALS   \n");
 	printf("\n\n");
-	printf(" All users will be held responsible for any damage or loss of library materials in their possession and wll be required to meet the cost of replacement and processing\n");
-	printf(" Users must ensure that the books they borrow are in good condition to avoid being held responsible for any damage noted while returning the books\n");
-	printf(" Lost books must be reported to the librarian immediately and replaced or paid for within 30 days\n");
-	printf(" Lost library books that are recovered, must be handed to the librarian as they remain the property of college library\n");
+	printf("\tAll users will be held responsible for any damage or loss of library materials in their possession and wll be required to meet the cost of replacement and processing\n");
+	printf("\tUsers must ensure that the books they borrow are in good condition to avoid being held responsible for any damage noted while returning the books\n");
+	printf("\tLost books must be reported to the librarian immediately and replaced or paid for within 30 days\n");
+	printf("\tLost library books that are recovered, must be handed to the librarian as they remain the property of college library\n");
 	printf("\n\n");
-	printf("  OVERDUE CHARGES/FINES  \n");
+	printf("\t\t\t\t\t\tOVERDUE CHARGES/FINES  \n");
 	printf("\n\n\n");
-	printf(" UPTO 5 DAYS      Re 1 PER DAY\n");
-	printf(" NEXT 5 DAYS      Rs 2 PER DAY\n");
-	printf(" NEXT 10 DAYS     Rs 4 PER DAY\n");
-	printf(" ABOVE THAT       Rs 5 PER DAY\n");
+	printf("\t\t\t\t\tUPTO 5 DAYS      Re 1 PER DAY\n");
+	printf("\t\t\t\t\tNEXT 5 DAYS      Rs 2 PER DAY\n");
+	printf("\t\t\t\t\tNEXT 10 DAYS     Rs 4 PER DAY\n");
+	printf("\t\t\t\t\tABOVE THAT       Rs 5 PER DAY\n");
 	printf("\n\n\n");
-	printf("     THANK YOU    \n");
+	printf(" \t\t\t\t\t\tTHANK YOU    \n");
+
+	
 	
 }
 //Function to Add new Books
 void addBook()
 {
 	//system("cls");
-	printf("******Add New Book Detail******\n");
+	printf("\n\t\t\t\t******Add New Book Detail******\n");
 
-	printf("Enter Book Title :\n");
+	printf("\n\t\t\t\tEnter Book Title : ");
 	fflush(stdin);
 	gets(book[count].title);
 
-	printf("Enter Book Author :\n");
+	printf("\n\t\t\t\tEnter Book Author : ");
 	fflush(stdin);
 	gets(book[count].author);
-    printf("Enter Book Price :");
+    printf("\n\t\t\t\tEnter Book Price :");
 	scanf("%f",&book[count].price);
-	printf("Enter Book Page : ");
+	printf("\n\t\t\t\tEnter Book Page : ");
 	scanf("%d",&book[count].page);
 	
 	count++;
@@ -160,13 +167,14 @@ void addBook()
  {
  	int i;
  	//system("cls");
- 	printf("\n\n\t\t@@@@@@@@@@@@@@ Books Detail @@@@@@@@@@@");
- 	printf("\n\n\t\t----------------------------------------");
+ 	printf("\n\n\t\t\t\t@@@@@@@@@@@@@@ Books Detail @@@@@@@@@@@");
+ 	printf("\n\n\t---------------------------------------------------------------------------------");
     printf("\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages");
-    printf("\n\n\t\t----------------------------------------\n");
+    printf("\n\n\t---------------------------------------------------------------------------------\n");
 
     for(i=0;i< count;i++)
-    {
+    { 
+		printf("\t%d).",i+1);
     	printf("\t\t %s",book[i].title);
     	printf("\t\t\t %s",book[i].author);
     	printf("\t\t\t %f",book[i].price);
@@ -220,7 +228,7 @@ void removeBook()
 		{
 			//stem("cls");
 			printf("\n\n\t\t ######## Remove Book Detail ########");
-			printf("\n\n\t\t Book Title : %s",book[i].title);
+			printf("\n\n\t\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author  : %s",book[i].author);
 			printf("\n\t\tBook Price    : %f",book[i].price);
 			printf("\n\t\t Book Page    : %d\n",book[i].page);
@@ -261,7 +269,7 @@ void removeBook()
   	 	{
   	 		//system("cls");
   	 		printf("\n\n\t\t ######## Book Detail ########");
-			printf("\n\n\t\t Book Title : %s",book[i].title);
+			printf("\n\n\t\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author  : %s",book[i].author);
 			printf("\n\t\tBook Price    : %f",book[i].price);
 			printf("\n\t\t Book Page    : %d\n",book[i].page);
