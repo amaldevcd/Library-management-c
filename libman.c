@@ -152,7 +152,7 @@ void addBook()
 	gets(book[count].title);
 
 	printf("\n\t\t\t\tEnter Book Author : ");
-	clean_stdin();
+	//clean_stdin();
 	gets(book[count].author);
     printf("\n\t\t\t\tEnter Book Price :");
 	scanf("%f",&book[count].price);
@@ -191,6 +191,7 @@ void searchBook()
 	char btitle[10];
 	int i;
 	printf("Enter Book Title to be Search: ");
+	clean_stdin();
 	gets(btitle);
 	for(i=0;i<count;i++)
 	{
@@ -221,6 +222,7 @@ void removeBook()
 	int i,j;
 	Book *temp;
 	printf("\n Enter Book Title to be Removed :");
+	clean_stdin();
 	gets(btitle);
 	for(i=0;i<count;i++)
 	{
@@ -262,6 +264,7 @@ void removeBook()
   	int i,j;
   	Book temp;
   	printf("\n Enter Book Title to be Removed :");
+	  clean_stdin();
   	gets(btitle);
   	 for(i =0; i<count;i++)
   	 {
