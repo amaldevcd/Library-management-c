@@ -174,12 +174,11 @@ void addBook()
 	system("clear");
 	printf("******Add New Book Detail******\n");
 
-	printf("Enter Book Title :\n");
+	printf("Enter Book Title :");
 	clean_stdin();
 	gets(book[countBook].title);
 
-	printf("Enter Book Author :\n");
-	clean_stdin();
+	printf("Enter Book Author :");
 	gets(book[countBook].author);
     printf("Enter Book Price :");
 	scanf("%f",&book[countBook].price);
