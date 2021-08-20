@@ -24,8 +24,8 @@ void searchUser();
 //Structure for Books
 typedef struct addBook
 {
-	char title[20];
-    char author[20];
+	char title[35];
+    char author[35];
     int page;
     float price;
 }Book;
@@ -213,7 +213,7 @@ void addBook()
  //Function to search for a book by Title
 void searchBook()
 {
-	char btitle[20];
+	char btitle[30];
 	int i;
 	printf("Enter Book Title to be Search: ");
 	clean_stdin();
@@ -244,7 +244,7 @@ void searchBook()
 
 void removeBook()
 {
-	char btitle[10];
+	char btitle[30];
 	int i,j;
 	Book *temp;
 	printf("\n Enter Book Title to be Removed :");
@@ -286,10 +286,10 @@ void removeBook()
  
   void updateBook()
   {
-  	char btitle[10];
+  	char btitle[30];
   	int i,j;
   	Book temp;
-  	printf("\n Enter Book Title to be Removed :");
+  	printf("\n Enter Book Title to be Updated :");
 	clean_stdin();
   	gets(btitle);
   	 for(i =0; i<countBook;i++)
@@ -309,7 +309,6 @@ void removeBook()
             gets(book[i].title);
             printf("\nEnter Book Author :");
 
-            clean_stdin();
             gets(book[i].author);
             printf("\n Enter Book Price :");
             scanf("%f",&book[i].price);
