@@ -220,11 +220,11 @@ void addBook()
 void searchBook()
 {
 	char btitle[30];
-	int i;
+	int i,flag=-1;
 	printf("Enter Book Title to be Search: ");
 	clean_stdin();
 	gets(btitle);
-	printf("string : %s",btitle);
+	printf("string : %s \n",btitle);
 	for(i=0;i<countBook;i++)
 	{
 		if(strcasecmp(book[i].title,btitle)==0)
@@ -235,15 +235,16 @@ void searchBook()
 			printf("\n\t\t Book Author : %s",book[i].author);
 			printf("\n\t\t Book Price : %f",book[i].price);
 			printf("\n\t\t Book Page : %d",book[i].page);
+			flag++;
 		}
 			
-		else
-		{
-			printf("The above title book is not present \n");
-		}
 
 		
 	}
+	if(flag==-1)
+		{
+			printf("The above title book is not present \n");
+		}
 } 
 
 //Function to remove Book by Title
@@ -251,7 +252,7 @@ void searchBook()
 void removeBook()
 {
 	char btitle[30];
-	int i,j;
+	int i,j,flag=-1;
 	Book *temp;
 	printf("\n Enter Book Title to be Removed :");
 	clean_stdin();
@@ -273,17 +274,16 @@ void removeBook()
 
 			}
 			countBook--;
+			flag++;
 			return;
 
-		}
+		}	
 
-		else
+	}
+	if(flag==-1)
 		{
 			printf("The above title book is not present \n");
 		}
-	
-
-	}
 	
 }
 
@@ -320,12 +320,14 @@ void removeBook()
             scanf("%f",&book[i].price);
             printf("\n Enter Book Page :");
             scanf("%d",&book[i].page);
+
             return;
   	 	}
 		 
   	 
   	 }
 	   printf("\n\nThe above title book is not present \n");
+
   }
 //Function to show all users
 void userRegistration()
