@@ -6,6 +6,9 @@
 #include<ctype.h>
 #include<string.h>
 #include <stdlib.h>
+#include <dos.h>
+#include<time.h>
+
 
 //Function Declaration
 void clean_stdin();
@@ -36,6 +39,8 @@ typedef struct addUser
 	char name[20];
 	long phoneNo;
 	long idNo;
+	int submitdate ,submitmonth,submityear;
+
 }User;
 
 Book *book;      //Global Book type Pointer
@@ -44,6 +49,7 @@ int countBook=0;   //Global Count Variable Book
 int sizeBook;        //Global Variable for Dynamic Memory Allocation Book
 int countUser=0;   //Global Count Variable User
 int sizeUser;        //Global Variable for Dynamic Memory Allocation User
+int idcounter=1001;  //For id 
 
 
 
@@ -288,7 +294,7 @@ void removeBook()
   void updateBook()
   {
   	char btitle[30];
-  	int i,j,flag=-1;
+  	int i,j;
   	Book temp;
   	printf("\n Enter Book Title to be Updated :");
 	clean_stdin();
@@ -315,16 +321,14 @@ void removeBook()
             scanf("%f",&book[i].price);
             printf("\n Enter Book Page :");
             scanf("%d",&book[i].page);
-            flag++;
 
+            return;
   	 	}
-		
+		 
   	 
   	 }
-  	 if(flag==-1)
-		{
-			printf("The above title book is not present \n");
-		}
+	   printf("\n\nThe above title book is not present \n");
+
   }
 //Function to show all users
 void userRegistration()
@@ -341,8 +345,8 @@ void userRegistration()
 	
 	
  // ID generation
-	 user[countUser].idNo=1000+1;
-
+	 user[countUser].idNo=idcounter;
+     idcounter++;
 	 countUser++;
 }
 
@@ -359,44 +363,104 @@ void showAlluser()
     {
     	printf("\t\t %s",user[i].name);
     	printf("\t\t\t %ld",user[i].phoneNo);
-    	printf("\t\t\t %ld",user[i].idNo);
+    	printf("\t\t\t %ld\n",user[i].idNo);
     	
 
     }
 
 
 }
-
+//Function to take book by the user
 void takeBook()
 {
 	char uname[10];
 	long id;
 	int i,j;
+	char bname[10];
+	int presentDate,presentMonth,presentYear,lastDate,lastMonth,lastYear;
 	User *temp;
 	printf("\nEnter User Name : ");
 	clean_stdin();
 	gets(uname);
 	printf("\nEnter Library ID :");
 	scanf("%ld",&id);
+	printf("Enter the Name of the Book : ");
+	clean_stdin();
+    gets(bname);
 	for(i=0;i<countUser;i++)
-	{
+	{    //To check if the user has reg
 		if(strcasecmp(user[i].name,uname)==0&&(user[i].idNo==id))
-		{
-              for(j=i;j<countUser-1;j++)
-			{
-				user=user+1;
+		{   
+           for(j=0;j<countBook;j++)
+		   {    
+			   if(strcasecmp(book[j].title,bname)==0)
+			   {      
+				   for(int k=j;k<countBook-1;k++)
+			      {
+				     book=book+1;
 
+			       }
+			        countBook--;
+				// To calculate the return date	
+					 time_t t;
+                  t = time(NULL);
+                  struct tm tm = *localtime(&t);
+                  printf("Current Date: %d-%d-%d \n", tm.tm_mday, tm.tm_mon+1, tm.tm_year+1900);
+                  int monthDate[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+                  int leapmonthDate[12]={31,29,31,30,31,30,31,31,30,31,30,31};
+                  int  presentDate,presentMonth,presentYear,lastDate,lastMonth,lastYear;
+                  presentDate=tm.tm_mday;
+                  presentMonth=tm.tm_mon+1;
+                  presentYear=tm.tm_year+1900;
+                  if(presentYear%100==0&&presentYear%4==0)
+                  {
+                     if(presentDate+14>leapmonthDate[presentMonth-1])
+                     {
+                         lastDate=(presentDate+14)-leapmonthDate[presentMonth-1];
+                         if(presentMonth+1>12)
+                         {
+                           lastMonth=presentMonth+1-12;
+                           lastYear=presentYear+1;
+                         }
+                         else
+                         {
+                           lastMonth=presentMonth+1;
+                           lastYear=presentYear;
+                        }
+                    }  
+                  }
+
+                 else{
+                       if(presentDate+14>monthDate[presentMonth-1])
+                       {
+                          lastDate=(presentDate+14)-monthDate[presentMonth-1];
+                          if(presentMonth+1>12)
+                          {
+                           lastMonth=presentMonth+1-12;
+                           lastYear=presentYear+1;
+                          }
+                         else
+                          {
+                           lastMonth=presentMonth+1;
+                           lastYear=presentYear;
+                         }
+                        }  
+                    }
+					user[i].submitdate=lastDate;
+					user[i].submitmonth=lastMonth;
+					user[i].submityear=lastYear;
+                 printf("return Date: %d-%d-%d\n",lastDate,lastMonth,lastYear); 
+			     
+	            }
 			}
-			countUser--;
 			return;
-	    }
-		else
-		{
-            printf("\n\nUser not yet Registered");
-		}	
+		}
+		
+			
     }  
-
+        printf("\n\nUser not yet Registered");
 }
+// Function to Search for User		
 void searchUser()
 {
 	long num;
@@ -414,13 +478,13 @@ void searchUser()
 	    	printf("\t\t\t %ld",user[i].phoneNo);
 	    	printf("\t\t\t %ld",user[i].idNo);
 	    	break;
+
+			return;
 		}
-		else
-		{
-			printf("User not found");
-		}
+		
 
 	}
+	printf("User not found");
 }
 void clean_stdin()
 {
