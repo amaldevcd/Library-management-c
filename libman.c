@@ -100,6 +100,7 @@ void main()
 	      break;
 	   case 6:
 	        rules();
+	        break;
 	   case 7:
 	        userRegistration();
 	      break;
