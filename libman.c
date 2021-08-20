@@ -14,7 +14,8 @@ void clean_stdin();
 void rules();
 void admin_Login();
 void addBook();
-void showAllBook();
+void showAllBookAdmin();
+void showAllBookUser();
 void searchBook();
 void removeBook();
 void updateBook();
@@ -104,7 +105,7 @@ void main()
 	        addBook();
 		  break;
 	  case 2:
-	        showAllBook();
+	        showAllBookAdmin();
 	      break;
 	  case 3:
 	        searchBook();
@@ -149,7 +150,7 @@ void main()
 		     returnBook();
 		  break;
 	   case 3:
-	        showAllBook();
+	        showAllBookUser();
 	      break;
 	  case 4:
 	        searchBook();
@@ -241,7 +242,7 @@ void addBook()
 }
 
 //Function to Show All Books Record
- void showAllBook()
+ void showAllBookUser()
  {
  	int i;
  	system("clear");
@@ -251,12 +252,35 @@ void addBook()
     printf("\n\n\t\t----------------------------------------\n");
 
     for(i=0;i< countBook;i++)
-    {
+    { 
+		 if(book[i].takenBook!=1)
+	    {
     	printf("\t\t %s",book[i].title);
     	printf("\t\t\t %s",book[i].author);
     	printf("\t\t\t %f",book[i].price);
     	printf(" \t\t %d\n",book[i].page);
+		}
+    }
 
+
+ }
+ void showAllBookAdmin()
+ {
+ 	int i;
+ 	system("clear");
+ 	printf("\n\n\t\t@@@@@@@@@@@@@@ Books Detail @@@@@@@@@@@");
+ 	printf("\n\n\t\t----------------------------------------");
+    printf("\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages");
+    printf("\n\n\t\t----------------------------------------\n");
+
+    for(i=0;i< countBook;i++)
+    { 
+		 
+    	printf("\t\t %s",book[i].title);
+    	printf("\t\t\t %s",book[i].author);
+    	printf("\t\t\t %f",book[i].price);
+    	printf(" \t\t %d\n",book[i].page);
+		
     }
 
 
@@ -440,10 +464,10 @@ void takeBook()
 			   {      
 				   for(int k=j;k<countBook-1;k++)
 			      {
-				     book=book+1;
-
+				     
+                      book[j].takenBook=1;
 			       }
-			        countBook--;
+			        
 				// To calculate the return date	
 				 time_t now;
 				 time(&now);
