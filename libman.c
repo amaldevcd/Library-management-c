@@ -61,13 +61,16 @@ void main()
 	printf("\t\t\t\tLIBRARY \n");
 
 	printf("  \n  ");
-	printf("\t\t\tWELCOME\n");
+	printf("\t\t\t\tWELCOME\n");
 	
 
 // calling of admin_Login() function     
 	admin_Login();                 
 
-	 
+	 printf("\n\t\t\tEnter the CHOICE\n");
+	 printf("\n\t\t1).ADMIN\t\t2).USER\n\t\t\t\t");
+	 int choice1;
+	 scanf("%d",&choice1);
 
  //Create Book Array Dynamic using size input by User 
         
@@ -76,15 +79,25 @@ void main()
  //Create User Array Dynamic using size input by User
          user = (User*) malloc(sizeof(User)*sizeUser);
 
-
+    int rechoice=1;
  //Selecting Choice of User   
      do                                                   // to repeat
-  {
-
-    printf("\n 1.Add Book \n 2.Show All Book \n 3.Search Book \n 4.Remove Book \n 5.Update Book \n 6.Rules\n 7.user reg\n 8.showusers\n 9.Take Book\n 10.Search User\n");		  
-    printf("Enter your choice \n");
-	int choice;
-	scanf("%d",&choice);
+  {    
+     if(rechoice==0)
+	 {
+		printf("\n\t\t\tEnter the CHOICE\n");
+	    printf("\n\t\t1).ADMIN\t\t2).USER\n\t\t\t\t");
+	    scanf("%d",&choice1); 
+	 } 
+    		  
+    
+	
+	if(choice1 == 1)
+	{   
+		printf("\n\t 1.Add Book \n\t 2.Show All Book \n\t 3.Search Book \n\t 4.Remove Book \n\t 5.Update Book \n\t 6.Rules\n\t 7.user reg\n\t 8.showusers\n\t 9.Search User");
+		printf("\nEnter your choice \n");
+	    int choice;
+	    scanf("%d",&choice);
 	  switch (choice)
 	  {
 	  case 1:
@@ -111,21 +124,50 @@ void main()
 	   case 8:
 	        showAlluser();
 	      break;
-	   case 9:
+       case 9:
+	        searchUser();
+			break;
+	    default:
+	        printf("\tYou Entered The Wrong Choice");
+		  break;			
+
+	  }
+	}
+	if(choice1==2)
+	{
+	  printf("\n\t\t\t\t\t 1.Take Book\n\t\t\t\t\t 2.Return Book\n\t\t\t\t\t 3.Show All Book \n\t\t\t\t\t 4.Search Book \n\t\t\t\t\t 5.Rules\n");
+	  printf("Enter your choice \n");
+	  int choice;
+	  scanf("%d",&choice);
+	  switch (choice)
+	  {
+	   case 1:
 		     takeBook();
 		  break;	   		  	  	  	  
-	   case 10:
-	        searchUser();
-			break;	 
-		case 11:
+	    
+	   case 2:
 		     returnBook();
-		  break;		  	  	  	  
+		  break;
+	   case 3:
+	        showAllBook();
+	      break;
+	  case 4:
+	        searchBook();
+	      break;  
+      case 5:
+	        rules();
+	        break;
 	  default:
 	        printf("\tYou Entered The Wrong Choice");
 		  break;
 	  }
-	  printf("\n\t\t\t\t Press Enter to continue");
-    	scanf("%c",&space);
+	}  
+	 /* printf("\n\t\t\t\t Press Enter to continue");
+    	scanf("%c",&space);*/
+	  printf("\n\t\t press 0 to go back to ADMIN or USER choice or to Continue press 1\n");
+	    scanf("%d",&rechoice);
+	  
+	 
  }while(1);
 
 }
@@ -484,6 +526,8 @@ void returnBook()
        if(strcasecmp(user[i].name,uname)==0&&(user[i].idNo==id))
 	       index=i;
 	}
+  if(index!=0)
+  {
 	time_t now;
 	time(&now);
 	struct tm *local = localtime(&now);
@@ -498,7 +542,7 @@ void returnBook()
 	lastMonth=user[index].submitmonth;
 	lastYear=user[index].submityear;
     
- //To find the no of Days
+  //To find the no of Days
     if(presentYear<lastYear)
       { 
         int diffYear=lastYear-presentYear;
@@ -563,7 +607,7 @@ void returnBook()
          
          }
 	     
- //To find the Fine
+  //To find the Fine
 	if(days==0)
 	   printf("You are on time  !NO fine for you.......");
 	else if(days<=5&&days>0)
@@ -576,6 +620,9 @@ void returnBook()
       fine =5.0+10.0+40.0+((days-20)*5.0);      
 
     printf("Fine =%f",fine);
+  }	
+  else
+    printf("\nThe user has not yet Registered\n");
 
 }
 // Function to Search for User		
