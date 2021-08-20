@@ -6,7 +6,6 @@
 #include<ctype.h>
 #include<string.h>
 #include <stdlib.h>
-#include <dos.h>
 #include<time.h>
 
 
@@ -22,6 +21,7 @@ void updateBook();
 void userRegistration();
 void showAlluser();
 void takeBook();
+void returnBook();
 void searchUser();
 
 //Structure for Books
@@ -31,6 +31,7 @@ typedef struct addBook
     char author[35];
     int page;
     float price;
+	int takenBook;
 }Book;
 
 //Structure for User
@@ -46,9 +47,9 @@ typedef struct addUser
 Book *book;      //Global Book type Pointer
 User *user;      //Global  User type Pointer 
 int countBook=0;   //Global Count Variable Book
-int sizeBook;        //Global Variable for Dynamic Memory Allocation Book
+int sizeBook=2;        //Global Variable for Dynamic Memory Allocation Book
 int countUser=0;   //Global Count Variable User
-int sizeUser;        //Global Variable for Dynamic Memory Allocation User
+int sizeUser=2;        //Global Variable for Dynamic Memory Allocation User
 int idcounter=1001;  //For id 
 
 
@@ -66,10 +67,7 @@ void main()
 // calling of admin_Login() function     
 	admin_Login();                 
 
-	printf("Enter Total NO. of Books you Want to Add in LIBRARY : ");
-	     scanf("%d",&sizeBook);
-	printf("Enter Total NO. of User you Want to Add in LIBRARY : ");
-	     scanf("%d",&sizeUser);	 
+	 
 
  //Create Book Array Dynamic using size input by User 
         
@@ -117,7 +115,11 @@ void main()
 		     takeBook();
 		  break;	   		  	  	  	  
 	   case 10:
-	        searchUser();		  	  	  	  
+	        searchUser();
+			break;	 
+		case 11:
+		     returnBook();
+		  break;		  	  	  	  
 	  default:
 	        printf("\tYou Entered The Wrong Choice");
 		  break;
@@ -377,7 +379,6 @@ void takeBook()
 	long id;
 	int i,j;
 	char bname[10];
-	int presentDate,presentMonth,presentYear,lastDate,lastMonth,lastYear;
 	User *temp;
 	printf("\nEnter User Name : ");
 	clean_stdin();
@@ -402,16 +403,16 @@ void takeBook()
 			       }
 			        countBook--;
 				// To calculate the return date	
-					 time_t t;
-                  t = time(NULL);
-                  struct tm tm = *localtime(&t);
-                  printf("Current Date: %d-%d-%d \n", tm.tm_mday, tm.tm_mon+1, tm.tm_year+1900);
+				 time_t now;
+				 time(&now);
+				 struct tm *local = localtime(&now);
                   int monthDate[12]={31,28,31,30,31,30,31,31,30,31,30,31};
                   int leapmonthDate[12]={31,29,31,30,31,30,31,31,30,31,30,31};
                   int  presentDate,presentMonth,presentYear,lastDate,lastMonth,lastYear;
-                  presentDate=tm.tm_mday;
-                  presentMonth=tm.tm_mon+1;
-                  presentYear=tm.tm_year+1900;
+                  presentDate=local->tm_mday;
+                  presentMonth=local->tm_mon+1;
+                  presentYear=local->tm_year+1900;
+				  printf("Current Date: %d-%d-%d \n",presentDate,presentMonth,presentYear);
                   if(presentYear%100==0&&presentYear%4==0)
                   {
                      if(presentDate+14>leapmonthDate[presentMonth-1])
@@ -459,6 +460,123 @@ void takeBook()
 			
     }  
         printf("\n\nUser not yet Registered");
+}
+
+//Function while returning book and find if fine is there
+void returnBook()
+{    int days=0;
+     float fine=0.0;
+    char uname[10];
+	long id;
+	int index;
+    printf("Enter username : ");
+
+    clean_stdin();
+	gets(uname);
+
+	printf("Enter Library ID : ");
+    scanf("%ld",&id);
+	printf("Enter Book Title :\n");
+	clean_stdin();
+	gets(book[countBook].title);
+    for(int i=0;i<countUser;i++)
+	{
+       if(strcasecmp(user[i].name,uname)==0&&(user[i].idNo==id))
+	       index=i;
+	}
+	time_t now;
+	time(&now);
+	struct tm *local = localtime(&now);
+    int monthDate[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+    int leapmonthDate[12]={31,29,31,30,31,30,31,31,30,31,30,31};
+    int  presentDate,presentMonth,presentYear,lastDate,lastMonth,lastYear;
+    presentDate=local->tm_mday;
+    presentMonth=local->tm_mon+1;
+    presentYear=local->tm_year+1900;
+	printf("Current Date: %d-%d-%d \n",presentDate,presentMonth,presentYear);
+    lastDate=user[index].submitdate;
+	lastMonth=user[index].submitmonth;
+	lastYear=user[index].submityear;
+    
+ //To find the no of Days
+    if(presentYear<lastYear)
+      { 
+        int diffYear=lastYear-presentYear;
+           if(diffYear>=1)
+            {  if(diffYear>1)
+                {
+                  days=days+(diffYear-1)*365;      //If more than one Year
+                   
+                }
+               if(presentMonth>lastMonth)
+               {  
+                  for(int i=presentMonth;i<12;i++)
+                  {                                      
+                    if(i==2){
+                        if(presentYear%100==0&&presentYear%4==0)   
+                        days=days+monthDate[i]+1;
+                        else
+                         days=days+monthDate[i];
+                          }
+                   days=days+monthDate[i];
+                  }
+                  for(int i=0;i<(lastMonth-1);i++)
+                  { 
+                     if(i==2){   
+                        if(presentYear%100==0&&presentYear%4==0)
+                        days=days+monthDate[i]+1;                    
+                        else
+                         days=days+monthDate[i];
+                           }
+                    days=days+monthDate[i];
+                  }
+               }
+               if(presentMonth<lastMonth)
+               {
+                for(int i=presentMonth;i<lastMonth;i++)
+                {  if(i==2){
+                        if(presentYear%100==0&&presentYear%4==0)       
+                        days=days+monthDate[i]+1;
+                        else
+                         days=days+monthDate[i];
+                           }
+                  days=days+monthDate[i];
+                }
+                
+               } 
+                 if(presentMonth==2){   
+                        if(presentYear%100==0&&presentYear%4==0)
+                          days=days+(monthDate[presentMonth-1]+1-presentDate);
+                        else
+                           days=days+(monthDate[presentMonth-1]-presentDate);
+                       days=days+(lastDate-1);      
+                 }
+                 else{
+                          days=days+(monthDate[presentMonth-1]-presentDate);
+                          days=days+(lastDate-1);
+                 }
+                 
+                
+            }
+            
+
+         
+         }
+	     
+ //To find the Fine
+	if(days==0)
+	   printf("You are on time  !NO fine for you.......");
+	else if(days<=5&&days>0)
+	   fine = days*1.0;
+	else if(days<=10&&days>5)
+	  fine =5.0+((days-5)*2.0);
+    else if(days<=20&&days>10)
+      fine =5.0+10.0+((days-10)*4.0);
+    else if(days>20)
+      fine =5.0+10.0+40.0+((days-20)*5.0);      
+
+    printf("Fine =%f",fine);
+
 }
 // Function to Search for User		
 void searchUser()
