@@ -213,7 +213,7 @@ void addBook()
  //Function to search for a book by Title
 void searchBook()
 {
-	char btitle[10];
+	char btitle[20];
 	int i;
 	printf("Enter Book Title to be Search: ");
 	clean_stdin();
