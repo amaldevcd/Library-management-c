@@ -58,17 +58,15 @@ int idcounter=1001;  //For id
 //Main Function
 void main()
 { 
+	system("clear");
 	char space;
-	printf("\t\t\t\tLIBRARY \n");
+	printf("\033[1;36m\t\t\t\tWELCOME TO LIBRARY \033[0m\n");
 
-	printf("  \n  ");
-	printf("\t\t\t\tWELCOME\n");
-	
 
 // calling of admin_Login() function     
-	admin_Login();                 
+	// admin_Login();                 
 
-	 printf("\n\t\t\tEnter the CHOICE\n");
+	 printf("\n\t\t\033[1;37mLogin as..\n");
 	 printf("\n\t\t1).ADMIN\t\t2).USER\n\t\t\t\t");
 	 int choice1;
 	 scanf("%d",&choice1);
@@ -86,7 +84,7 @@ void main()
   {    
      if(rechoice==0)
 	 {
-		printf("\n\t\t\tEnter the CHOICE\n");
+		printf("\n\t\t\tEnter the CHOICE : ");
 	    printf("\n\t\t1).ADMIN\t\t2).USER\n\t\t\t\t");
 	    scanf("%d",&choice1); 
 	 } 
@@ -96,7 +94,7 @@ void main()
 	if(choice1 == 1)
 	{   
 		printf("\n\t 1.Add Book \n\t 2.Show All Book \n\t 3.Search Book \n\t 4.Remove Book \n\t 5.Update Book \n\t 6.Rules\n\t 7.user reg\n\t 8.showusers\n\t 9.Search User");
-		printf("\nEnter your choice \n");
+		printf("\nEnter your choice : ");
 	    int choice;
 	    scanf("%d",&choice);
 	  switch (choice)
@@ -129,7 +127,7 @@ void main()
 	        searchUser();
 			break;
 	    default:
-	        printf("\tYou Entered The Wrong Choice");
+	        printf("\t\033[1;31mYou Entered The Wrong Choice\033[0m");
 		  break;			
 
 	  }
@@ -137,7 +135,7 @@ void main()
 	if(choice1==2)
 	{
 	  printf("\n\t\t\t\t\t 1.Take Book\n\t\t\t\t\t 2.Return Book\n\t\t\t\t\t 3.Show All Book \n\t\t\t\t\t 4.Search Book \n\t\t\t\t\t 5.Rules\n");
-	  printf("Enter your choice \n");
+	  printf("Enter your choice : ");
 	  int choice;
 	  scanf("%d",&choice);
 	  switch (choice)
@@ -159,18 +157,18 @@ void main()
 	        rules();
 	        break;
 	  default:
-	        printf("\tYou Entered The Wrong Choice");
+	        printf("\t\033[1;31mYou Entered The Wrong Choice\033[0m");
 		  break;
 	  }
 	}  
 	 /* printf("\n\t\t\t\t Press Enter to continue");
     	scanf("%c",&space);*/
-	  printf("\n\t\t press 0 to go back to ADMIN or USER choice or to Continue press 1\n");
+	  printf("\n\tpress 0 to go back to ADMIN or USER choice or to Continue press 1\n");
 	    scanf("%d",&rechoice);
 	  
 	 
  }while(1);
-
+ printf("\033[0m");
 }
 
 
@@ -226,13 +224,13 @@ void addBook()
 	system("clear");
 	printf("******Add New Book Detail******\n");
 
-	printf("Enter Book Title :");
+	printf("Enter Book Title : ");
 	clean_stdin();
 	gets(book[countBook].title);
 
-	printf("Enter Book Author :");
+	printf("Enter Book Author : ");
 	gets(book[countBook].author);
-    printf("Enter Book Price :");
+    printf("Enter Book Price : ");
 	scanf("%f",&book[countBook].price);
 	printf("Enter Book Page : ");
 	scanf("%d",&book[countBook].page);
@@ -382,12 +380,12 @@ void removeBook()
             printf("\n\n\t\t ######## Add Book Detail ########");
             printf("\nEnter Book Title : ");
             gets(book[i].title);
-            printf("\nEnter Book Author :");
+            printf("\nEnter Book Author : ");
 
             gets(book[i].author);
-            printf("\n Enter Book Price :");
+            printf("\n Enter Book Price : ");
             scanf("%f",&book[i].price);
-            printf("\n Enter Book Page :");
+            printf("\n Enter Book Page : ");
             scanf("%d",&book[i].page);
 
             return;
@@ -404,11 +402,11 @@ void userRegistration()
    system("clear");
 	printf("******User Registration******\n");
 
-	printf("\nEnter the name of User :");
+	printf("\nEnter the name of User : ");
 	clean_stdin();
 	gets(user[countUser].name);
 
-    printf("\nEnter Phone Number of User :");
+    printf("\nEnter Phone Number of User : ");
 	scanf("%ld",&user[countUser].phoneNo);
 	
 	
@@ -449,7 +447,7 @@ void takeBook()
 	printf("\nEnter User Name : ");
 	clean_stdin();
 	gets(uname);
-	printf("\nEnter Library ID :");
+	printf("\nEnter Library ID : ");
 	scanf("%ld",&id);
 	printf("Enter the Name of the Book : ");
 	clean_stdin();
@@ -525,7 +523,7 @@ void takeBook()
 		
 			
     }  
-        printf("\n\nUser not yet Registered");
+        printf("\n\nUser not yet Registered. Contact admin for new registration");
 }
 
 //Function while returning book and find if fine is there
@@ -542,7 +540,7 @@ void returnBook()
 
 	printf("Enter Library ID : ");
     scanf("%ld",&id);
-	printf("Enter Book Title :\n");
+	printf("Enter Book Title : ");
 	clean_stdin();
 	gets(book[countBook].title);
     for(int i=0;i<countUser;i++)
