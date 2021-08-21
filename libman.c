@@ -310,7 +310,7 @@ void searchBook()
 	}
 	if(flag==-1)
 		{
-			printf("The above title book is not present \n");
+			printf("\033[1;31mThe above title book is not present \033[0m\n");
 		}
 } 
 
@@ -349,7 +349,7 @@ void removeBook()
 	}
 	if(flag==-1)
 		{
-			printf("The above title book is not present \n");
+			printf("\033[1;31mThe above title book is not present\033[0m \n");
 		}
 	
 }
@@ -393,7 +393,7 @@ void removeBook()
 		 
   	 
   	 }
-	   printf("\n\nThe above title book is not present \n");
+	   printf("\n\n\033[1;31mThe above title book is not present \033[0m\n");
 
   }
 //Function to show all users
@@ -523,7 +523,7 @@ void takeBook()
 		
 			
     }  
-        printf("\n\nUser not yet Registered. Contact admin for new registration");
+        printf("\n\n\033[1;31mUser not yet Registered.\033[0m Contact admin for new registration");
 }
 
 //Function while returning book and find if fine is there
@@ -644,7 +644,7 @@ void returnBook()
     printf("Fine =%f",fine);
   }	
   else
-    printf("\nThe user has not yet Registered\n");
+    printf("\n\033[1;31mThe user has not yet Registered\033[0m\n");
 
 }
 // Function to Search for User		
@@ -671,7 +671,7 @@ void searchUser()
 		
 
 	}
-	printf("User not found");
+	printf("\033[1;31mUser not found\033[0m");
 }
 void clean_stdin()
 {
