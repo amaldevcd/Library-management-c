@@ -142,8 +142,8 @@ void main()
 	}
 	if(choice1==2)
 	{
-	  printf("\n\t\t\t\t\t 1.Take Book\n\t\t\t\t\t 2.Return Book\n\t\t\t\t\t 3.Show All Book \n\t\t\t\t\t 4.Search Book \n\t\t\t\t\t 5.Rules\n");
-	  printf("Enter your choice : ");
+	  printf("\n\t\t\t\t\t \033[1;37m1.Take Book\n\t\t\t\t\t 2.Return Book\n\t\t\t\t\t 3.Show All Book \n\t\t\t\t\t 4.Search Book \n\t\t\t\t\t 5.Rules\n");
+	  printf("Enter your choice :\033[0m");
 	  int choice;
 	  scanf("%d",&choice);
 	  switch (choice)
@@ -258,7 +258,7 @@ void addBook()
  {  system("clear");
  	int i;
  	
- 	printf("\n\n\t\t@@@@@@@@@@@@@@@@ \033[1;32mBooks Detail\033[0m \033[1;37m @@@@@@@@@@@@@@@@");
+ 	printf("\033[1;37m\n\n\t\t@@@@@@@@@@@@@@@@ \033[0m\033[1;32mBooks Detail\033[0m \033[1;37m @@@@@@@@@@@@@@@@");
  	printf("\n\n\t\t------------------------------------------------------------------------------------");
     printf("\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages\033[0m");
     printf("\n\n\t\t------------------------------------------------------------------------------------\n");
@@ -302,7 +302,7 @@ void searchBook()
 {   system("clear");
 	char btitle[30];
 	int i,flag=-1;
-	printf("\t\tEnter Book Title to be Search: ");
+	printf("\t\t\033[1;37mEnter Book Title to be Search: ");
 	clean_stdin();
 	gets(btitle);
 	
@@ -441,7 +441,7 @@ void showAlluser()
 {
 	int i;
  	 system("clear");
- 	printf("\n\n\t\t@@@@@@@@@@@@@@ \033[1;32mUser Detail\033[0m\033[1;32m @@@@@@@@@@@");
+ 	printf("\n\n\t\t@@@@@@@@@@@@@@ \033[1;32mUser Detail\033[0m\033[1;37m @@@@@@@@@@@");
  	printf("\n\n\t\t--------------------------------------------------------------------------------");
     printf("\n\t\t user name \t\t user phoneNO \t\t\t idno");
     printf("\n\n\t\t--------------------------------------------------------------------------------\033[0m\n");
@@ -465,12 +465,12 @@ void takeBook()
 	int i,j;
 	char bname[10];
 	User *temp;
-	printf("\nEnter User Name : ");
+	printf("\033[1;37m\n\t\tEnter User Name : ");
 	clean_stdin();
 	gets(uname);
-	printf("\nEnter Library ID : ");
+	printf("\n\t\tEnter Library ID : ");
 	scanf("%ld",&id);
-	printf("Enter the Name of the Book : ");
+	printf("\n\n\t\tEnter the Name of the Book : ");
 	clean_stdin();
     gets(bname);
 	for(i=0;i<countUser;i++)
@@ -535,11 +535,11 @@ void takeBook()
 					user[i].submitdate=lastDate;
 					user[i].submitmonth=lastMonth;
 					user[i].submityear=lastYear;
-				printf("\n\n\t\t@@@@@@@@@@@@@@ \033[1;36mLEND BOOK\033[0m @@@@@@@@@@@");
-				 printf("\n\n\t\t%s have succesfull Lended the book ",user[i].name);	
-				 printf("\n\t\tBook issued Date: %d-%d-%d \n",presentDate,presentMonth,presentYear);	
-                 printf("\t\tBook return Date: %d-%d-%d\n",lastDate,lastMonth,lastYear); 
-			     
+				printf("\n\n\t\t@@@@@@@@@@@@@@ \033[1;32mLEND BOOK\033[0m @@@@@@@@@@@");
+				 printf("\n\n\t\t\033[1;32m%s have succesfully taken the book\033[0m",user[i].name);	
+				 printf("\n\n\t\tBook issued Date: %d-%d-%d \n",presentDate,presentMonth,presentYear);	
+                 printf("\n\t\tBook return Date: %d-%d-%d\n",lastDate,lastMonth,lastYear); 
+			     printf("\033[0m");
 	            }
 			}
 			return;
@@ -547,7 +547,7 @@ void takeBook()
 		
 			
     }  
-        printf("\n\n\033[1;31mUser not yet Registered.\033[0m Contact admin for new registration");
+        printf("\t\t\n\n\033[1;31mUser not yet Registered.\033[0m Contact admin for new registration");
 }
 
 //Function while returning book and find if fine is there
@@ -559,14 +559,14 @@ void returnBook()
     char uname[10];
 	long id;
 	int index;
-    printf("Enter username : ");
+    printf("\n\n\n\t\tEnter username : ");
 
     clean_stdin();
 	gets(uname);
 
-	printf("Enter Library ID : ");
+	printf("\t\t\n\nEnter Library ID : ");
     scanf("%ld",&id);
-	printf("Enter Book Title : ");
+	printf("\n\n\t\tEnter Book Title : ");
 	clean_stdin();
 	gets(book[countBook].title);
     for(int i=0;i<countUser;i++)
@@ -586,7 +586,7 @@ void returnBook()
     presentDate=local->tm_mday;
     presentMonth=local->tm_mon+1;
     presentYear=local->tm_year+1900;
-	printf("Current Date: %d-%d-%d \n",presentDate,presentMonth,presentYear);
+	printf("\n\n\t\tCurrent Date: %d-%d-%d \n",presentDate,presentMonth,presentYear);
     lastDate=user[index].submitdate;
 	lastMonth=user[index].submitmonth;
 	lastYear=user[index].submityear;
@@ -656,11 +656,11 @@ void returnBook()
          
 
          }
-       printf("\n\n\t\t@@@@@@@@@@@@@@\033[0;36m RETURN BOOK\033[0m @@@@@@@@@@@");
-	  printf("\n\n\t\t\033[0;32m%s have succesfull returned the book\033[0m \n",user[index].name);   
+       printf("\n\n\t\t\033[01;37m@@@@@@@@@@@@@@\033[0m\033[0;32m RETURN BOOK\033[0m @@@@@@@@@@@");
+	  printf("\n\n\t\t\033[1;32m%s have succesfull returned the book\033[0m \n",user[index].name);   
   //To find the Fine
 	if(days==0)
-	   printf("\t\t\tYou are on time  !NO fine for you.......\n");
+	   printf("\t\t\033[01;37mYou are on time  !NO fine for you.......\n");
 	else if(days<=5&&days>0)
 	   fine = days*1.0;
 	else if(days<=10&&days>5)
@@ -669,18 +669,18 @@ void returnBook()
       fine =5.0+10.0+((days-10)*4.0);
     else if(days>20)
       fine =5.0+10.0+40.0+((days-20)*5.0);      
-    printf("\t\t of days user is late: %d \n",days);
-    printf("\t\tFine for late return of book : %f \n",fine);
+    printf("\t\tNo of days user is late : %d \n",days);
+    printf("\t\tFine for late return of book : %f \n\033[m",fine);
   }	
   else
-    printf("\n\033[1;31mThe user has not yet Registered\033[0m\n");
+    printf("\n\n\t\t\033[1;31mThe user has not yet Registered. Contact admin\033[0m\n");
 
 }
 // Function to Search for User		
 void searchUser()
 {  system("clear");
 	long num;
-	printf("Enter the cell Number : ");
+	printf("\n\n\tEnter the cell Number : ");
 	scanf("%ld",&num);
 	for(int i=0;i<countUser;i++)
 	{
@@ -691,38 +691,39 @@ void searchUser()
 		    printf("\n\t\t user name \t\t user phoneNO \t\t idno");
 		    printf("\n\n\t\t--------------------------------------------------------------\n");
 		    printf("\t\t %s",user[i].name);
-	    	printf("\t\t\t %ld",user[i].phoneNo);
-	    	printf("\t\t\t %ld",user[i].idNo);
+	    	printf("\t\t %ld",user[i].phoneNo);
+	    	printf("\t\t %ld",user[i].idNo);
 			return;
 		}
 		
 
 	}
-	printf("\033[1;31mUser not found\033[0m");
+	printf("\n\t\033[1;31mUser not found\033[0m");
 }
 
 void removeUser()
 { 
-	
+	system("clear");
 	char uname[30];
 	long phoneNO;
 	int i,j;
 	Book *temp;
-	printf("\n Enter User Name to be Removed :");
+	printf("\n\tEnter User Name to be Removed :");
 	clean_stdin();
 	gets(uname);
-	printf("\n Enter User Phone NO :");
+	printf("\n\tEnter User Phone NO :");
     scanf("%ld",&phoneNO);
 	for(i=0;i<countUser;i++)
 	{
 		if((strcasecmp(user[i].name,uname)==0)&&(user[i].phoneNo==phoneNO))
 		{
 			system("clear");
-			printf("\n\n\t\t ######## \033[1;31mRemove USER Detail\033[0m ########");
+			printf("\n\n\t\t ######## \033[1;31mRemove USER Detail\033[0m\033[1;37m ########");
 			printf("\n\n\t\t User name : %s",user[i].name);
 			printf("\n\t\t User Phone no  : %ld",user[i].phoneNo);
 			printf("\n\t\t User id no   : %ld",user[i].idNo);
-			
+			printf("\033[0m");
+			printf("\n\n  \t\t\033[1;31mUser successfully removed\033[0m");
 
 			for(j=i;j<countUser-1;j++)
 			{
@@ -737,7 +738,7 @@ void removeUser()
 
 	}
 
-			printf("\033[1;31mThe above User is not present\033[0m \n");
+			printf("\n\t\033[1;31mUser not found\033[0m \n");
 	
 }
 void clean_stdin()
