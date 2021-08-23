@@ -53,13 +53,13 @@ int sizeBook=2;        //Global Variable for Dynamic Memory Allocation Book
 int countUser=0;   //Global Count Variable User
 int sizeUser=2;        //Global Variable for Dynamic Memory Allocation User
 int idcounter=1001;  //For id 
-char clear[3]="cls";
+
 
 
 //Main Function
 void main()
 { 
-	system(clear);
+	system("clear");
 	char space;
 	printf("\033[1;36m\t\t\tWELCOME TO LIBRARY \033[0m\n");
 
@@ -85,9 +85,11 @@ void main()
   {    
      if(rechoice==0)
 	 {
+	 	printf("\033[1;37m");
 		printf("\n\t\t\tEnter the CHOICE : ");
 	    printf("\n\t\t1).ADMIN\t\t2).USER\n\t\t\t\t");
 	    scanf("%d",&choice1); 
+	    printf("\033[0m");
 	 } 
     if(rechoice==2)		  
           break;
@@ -167,12 +169,12 @@ void main()
 	}  
 	 /* printf("\n\t\t\t\t Press Enter to continue");
     	scanf("%c",&space);*/
-	  printf("\n\n\n\tpress 0 to go back to ADMIN or USER choice or to Continue press 1 \n\t\t For exit press 2\n\t");
+	  printf("\n\n\n\t\033[0;33mpress 0 to go back to ADMIN or USER choice or to Continue press 1 \n\t\t For exit press 2\033[0m\n\t");
 	    scanf("%d",&rechoice);
 	  
-	 
+	printf("\033[0m"); 
  }while(1);
- printf("\033[0m");
+ 
 }
 
 
@@ -225,8 +227,9 @@ void rules()
 //Function to Add new Books
 void addBook()
 {
-	system(clear);
-	printf("\t\t\t\t********** \033[1;34mAdd New Book Detail\033[0m **********\n");
+	system("clear");
+	
+	printf("\t\t\t\t********** \033[1;36mAdd New Book Detail\033[0m \033[1;37m**********\n");
 
 	printf("\tEnter Book Title : ");
 	clean_stdin();
@@ -238,14 +241,18 @@ void addBook()
 	scanf("%f",&book[countBook].price);
 	printf("\tEnter Book Page : ");
 	scanf("%d",&book[countBook].page);
-	
+	printf("\033[0m\n");
+	printf("\t\033[1;32m%s added successfully...\033[0m",book[countBook].title);
 	countBook++;
+	
+
+
 
 }
 
 //Function to Show All Books Record
  void showAllBookUser()
- {  system(clear);
+ {  system("clear");
  	int i;
  	
  	printf("\n\n\t\t@@@@@@@@@@@@@@@@ \033[1;32mBooks Detail\033[0m @@@@@@@@@@@@@@@@");
@@ -267,7 +274,7 @@ void addBook()
 
  }
  void showAllBookAdmin()
- {  system(clear);
+ {  system("clear");
  	int i;
  	
  	printf("\n\n\t\t\t\t\t@@@@@@@@@@@@@@@@ \033[1;32mBooks Detail\033[0m @@@@@@@@@@@@@@@@@@");
@@ -289,7 +296,7 @@ void addBook()
  }
  //Function to search for a book by Title
 void searchBook()
-{   system(clear);
+{   system("clear");
 	char btitle[30];
 	int i,flag=-1;
 	printf("\t\tEnter Book Title to be Search: ");
@@ -332,7 +339,7 @@ void removeBook()
 	{
 		if(strcasecmp(book[i].title,btitle)==0)
 		{
-			system(clear);
+			system("clear");
 			printf("\n\n\t\t ######## \033[1;31mRemove Book Detail\033[0m ########");
 			printf("\n\n\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author  : %s",book[i].author);
@@ -373,7 +380,7 @@ void removeBook()
   	 {
   	 	if(strcasecmp(book[i].title,btitle)==0)
   	 	{
-  	 		system(clear);
+  	 		system("clear");
   	 		printf("\n\n\t\t############ \033[1;35mBook Detail\033[0m ############");
 			printf("\n\n\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author  : %s",book[i].author);
@@ -403,7 +410,7 @@ void removeBook()
 //Function to show all users
 void userRegistration()
 {
-   system(clear);
+   system("clear");
 	printf("\t\t\t********* \033[1;32mUser Registration\033[0m ******\n");
 
 	printf("\n\tEnter the name of User : ");
@@ -426,7 +433,7 @@ void userRegistration()
 void showAlluser()
 {
 	int i;
- 	 system(clear);
+ 	 system("clear");
  	printf("\n\n\t\t@@@@@@@@@@@@@@ \033[1;35mUser Detail\033[0m @@@@@@@@@@@");
  	printf("\n\n\t\t----------------------------------------");
     printf("\n\t\t user name \t\t user phoneNO \t\t idno");
@@ -445,7 +452,7 @@ void showAlluser()
 }
 //Function to take book by the user
 void takeBook()
-{   system(clear);
+{   system("clear");
 	char uname[10];
 	long id;
 	int i,j;
@@ -539,7 +546,7 @@ void takeBook()
 //Function while returning book and find if fine is there
 void returnBook()
 {  
-	system(clear);
+	system("clear");
 	  int days=0;
      float fine=0.0;
     char uname[10];
@@ -663,7 +670,7 @@ void returnBook()
 }
 // Function to Search for User		
 void searchUser()
-{  system(clear);
+{  system("clear");
 	long num;
 	printf("Enter the cell Number : ");
 	scanf("%ld",&num);
@@ -704,7 +711,7 @@ void removeUser()
 	{
 		if((strcasecmp(user[i].name,uname)==0)&&(user[i].phoneNo==phoneNO))
 		{
-			system(clear);
+			system("clear");
 			printf("\n\n\t\t ######## \033[1;31mRemove USER Detail\033[0m ########");
 			printf("\n\n\t\t User name : %s",user[i].name);
 			printf("\n\t\t User Phone no  : %ld",user[i].phoneNo);
