@@ -96,6 +96,7 @@ void main()
 	
 	if(choice1 == 1)
 	{   
+		printf("\033[1;37m");
 		printf("\n\t 1.Add Book \n\t 2.Show All Book \n\t 3.Search Book \n\t 4.Remove Book \n\t 5.Update Book \n\t 6.Rules\n\t 7.user reg\n\t 8.showusers\n\t 9.Search User\n\t 10.Remove User\n");
 		printf("\nEnter your choice : ");
 	    int choice;
@@ -137,6 +138,7 @@ void main()
 		  break;			
 
 	  }
+	  printf("\033[1;37m");
 	}
 	if(choice1==2)
 	{
@@ -169,7 +171,7 @@ void main()
 	}  
 	 /* printf("\n\t\t\t\t Press Enter to continue");
     	scanf("%c",&space);*/
-	  printf("\n\n\n\t\033[0;33mpress 0 to go back to ADMIN or USER choice or to Continue press 1 \n\t\t For exit press 2\033[0m\n\t");
+	  printf("\n\n\n\t\033[0;33mPress 0 to go back, 1 to continue and 2 to exit\033[0m\n\t");
 	    scanf("%d",&rechoice);
 	  
 	printf("\033[0m"); 
