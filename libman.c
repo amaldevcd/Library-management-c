@@ -263,7 +263,7 @@ void addBook()
     printf("\n\n\t\t--------------------------------------------------------------\n");
 
     for(i=0;i< countBook;i++)
-    { 
+    {  
 		 if(book[i].takenBook!=1)
 	    {
     	printf("\t\t %s",book[i].title);
@@ -441,7 +441,7 @@ void showAlluser()
  	 system("clear");
  	printf("\n\n\t\t@@@@@@@@@@@@@@ \033[1;35mUser Detail\033[0m @@@@@@@@@@@");
  	printf("\n\n\t\t----------------------------------------");
-    printf("\n\t\t user name \t\t user phoneNO \t\t idno");
+    printf("\n\t\t user name \t\t user phoneNO \t\t\t idno");
     printf("\n\n\t\t----------------------------------------\n");
 
     for(i=0;i< countUser;i++)
@@ -568,11 +568,12 @@ void returnBook()
 	clean_stdin();
 	gets(book[countBook].title);
     for(int i=0;i<countUser;i++)
-	{
+	{   
        if(strcasecmp(user[i].name,uname)==0&&(user[i].idNo==id))
 	       index=i;
+		   book[i].takenBook=0;
 	}
-  if(index!=0)
+  if(index>=0)
   {
 	time_t now;
 	time(&now);
