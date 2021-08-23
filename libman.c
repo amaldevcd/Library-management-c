@@ -173,6 +173,7 @@ void main()
     	scanf("%c",&space);*/
 	  printf("\n\n\n\t\033[0;33mPress 0 to go back, 1 to continue and 2 to exit\033[0m\n\t");
 	    scanf("%d",&rechoice);
+	    system("clear");
 	  
 	printf("\033[0m"); 
  }while(1);
@@ -190,37 +191,37 @@ void admin_Login()
 // List Rules to be followed in Libary
 void rules()
 {
-	printf("\t\t\t\t\t \033[1;35mLIBARY RULES AND REGULATIONS\033[0m  \n");
+	printf("\t\t\t\t\t \033[1;36mLIBARY RULES AND REGULATIONS\033[0m  \n");
 	printf("\t\t\t\t--------------------------------------------\n");
 	printf("\n\n\n");
-	printf("\t\t\t\t\t\tOPENING HOURS  \n");
-	printf("\n\n");
+	printf("\t\t\t\t\t\t\033[1;37mOPENING HOURS \033[0m \n");
+	printf("\n");
 	printf("\t\t\t\tMonday - Friday  08:00AM to 10:00PM\n");
 	printf("\t\t\t\tSaturday         09:00AM to 06:00PM\n");
     printf("\t\t\tThe libary is closed on Sundays and all public holidays\n");
-	printf("\n\n");
-	printf("\t\t\t\t\t\tDISCIPLINE  \n");
-	printf("\n\n");
-	printf("\tAll users must observe total silence in the library and its enviroment at all times\n");
-	printf("\tAll users are required to show their Library IDs to the security officer upon entrance to the library\n");
-	printf("\tUse of mobiles phones is strictly prohibited in the library\n");
-	printf("\tAll bags,cases,folders etc. must be left in the luggage area outside the library.\n");
-	printf("\tUsers are not allowed to leave their baggage overnight in the library. The library shall not take any responsibility for loss of personal property or book already signed out to a user.\n");
-	printf("\n\n");
-	printf("\t\t\t\t\tDAMAGE/LOSS OF LIBRARY MATERIALS   \n");
-	printf("\n\n");
-	printf("\tAll users will be held responsible for any damage or loss of library materials in their possession and wll be required to meet the cost of replacement and processing\n");
-	printf("\tUsers must ensure that the books they borrow are in good condition to avoid being held responsible for any damage noted while returning the books\n");
-	printf("\tLost books must be reported to the librarian immediately and replaced or paid for within 30 days\n");
-	printf("\tLost library books that are recovered, must be handed to the librarian as they remain the property of college library\n");
-	printf("\n\n");
-	printf("\t\t\t\t\t\tOVERDUE CHARGES/FINES  \n");
 	printf("\n\n\n");
+	printf("\t\t\t\t\t\t\033[1;37mDISCIPLINE \033[0m \n");
+	printf("\n");
+	printf("\t# All users must observe total silence in the library and its enviroment at all times\n");
+	printf("\t# All users are required to show their Library IDs to the security officer upon entrance to the library\n");
+	printf("\t# Use of mobiles phones is strictly prohibited in the library\n");
+	printf("\t# All bags,cases,folders etc. must be left in the luggage area outside the library.\n");
+	printf("\t# Users are not allowed to leave their baggage overnight in the library. The library shall not take any responsibility for loss of personal property or book already signed out to a user.\n");
+	printf("\n\n\n");
+	printf("\t\t\t\t\t\033[1;37mDAMAGE/LOSS OF LIBRARY MATERIALS \033[0m  \n");
+	printf("\n");
+	printf("\t# All users will be held responsible for any damage or loss of library materials in their possession and wll be required to meet the cost of replacement and processing\n");
+	printf("\t# Users must ensure that the books they borrow are in good condition to avoid being held responsible for any damage noted while returning the books\n");
+	printf("\t# Lost books must be reported to the librarian immediately and replaced or paid for within 30 days\n");
+	printf("\t# Lost library books that are recovered, must be handed to the librarian as they remain the property of college library\n");
+	printf("\n\n");
+	printf("\t\t\t\t\t\t\033[1;37mOVERDUE CHARGES/FINES \033[0m \n");
+	printf("\n");
 	printf("\t\t\t\t\tUPTO 5 DAYS      Re 1 PER DAY\n");
 	printf("\t\t\t\t\tNEXT 5 DAYS      Rs 2 PER DAY\n");
 	printf("\t\t\t\t\tNEXT 10 DAYS     Rs 4 PER DAY\n");
 	printf("\t\t\t\t\tABOVE THAT       Rs 5 PER DAY\n");
-	printf("\n\n\n");
+	printf("\n\n");
 	printf(" \t\t\t\t\t\tTHANK YOU    \n");
 
 	
@@ -258,9 +259,9 @@ void addBook()
  	int i;
  	
  	printf("\n\n\t\t@@@@@@@@@@@@@@@@ \033[1;32mBooks Detail\033[0m \033[1;37m @@@@@@@@@@@@@@@@");
- 	printf("\n\n\t\t-------------------------------------------------------------------------");
+ 	printf("\n\n\t\t------------------------------------------------------------------------------------");
     printf("\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages\033[0m");
-    printf("\n\n\t\t--------------------------------------------------------------\n");
+    printf("\n\n\t\t------------------------------------------------------------------------------------\n");
 
     for(i=0;i< countBook;i++)
     {  
@@ -416,7 +417,7 @@ void removeBook()
 void userRegistration()
 {
    system("clear");
-	printf("\t\t\t********* \033[1;32mUser Registration\033[0m ******\n");
+	printf("\t\t\t********* \033[1;32mUser Registration\033[0m \033[1;37m ******\n");
 
 	printf("\n\tEnter the name of User : ");
 	clean_stdin();
@@ -428,8 +429,9 @@ void userRegistration()
 	
  // ID generation
 	 user[countUser].idNo=idcounter;
-	 printf("\n\t\t USER have successfully been Registred\n");
-	printf("\t\tUser's Library ID : %ld\n",user[countUser].idNo);
+	 printf("\033[0m");
+	 printf("\n\t\t\033[1;32mUSER have successfully been Registred\n");
+	printf("\t\tUser's Library ID : %ld\n\033[0m",user[countUser].idNo);
      idcounter++;
 	 countUser++;
 	
@@ -439,10 +441,10 @@ void showAlluser()
 {
 	int i;
  	 system("clear");
- 	printf("\n\n\t\t@@@@@@@@@@@@@@ \033[1;35mUser Detail\033[0m @@@@@@@@@@@");
- 	printf("\n\n\t\t----------------------------------------");
+ 	printf("\n\n\t\t@@@@@@@@@@@@@@ \033[1;32mUser Detail\033[0m\033[1;32m @@@@@@@@@@@");
+ 	printf("\n\n\t\t--------------------------------------------------------------------------------");
     printf("\n\t\t user name \t\t user phoneNO \t\t\t idno");
-    printf("\n\n\t\t----------------------------------------\n");
+    printf("\n\n\t\t--------------------------------------------------------------------------------\033[0m\n");
 
     for(i=0;i< countUser;i++)
     {
@@ -685,14 +687,12 @@ void searchUser()
 		if(num==user[i].phoneNo)
 		{
 			printf("\n\n\t\t@@@@@@@@@@@@@@ \033[1;32mUser Detail\033[0m @@@@@@@@@@@");
-		 	printf("\n\n\t\t----------------------------------------");
+		 	printf("\n\n\t\t--------------------------------------------------------------");
 		    printf("\n\t\t user name \t\t user phoneNO \t\t idno");
-		    printf("\n\n\t\t----------------------------------------\n");
+		    printf("\n\n\t\t--------------------------------------------------------------\n");
 		    printf("\t\t %s",user[i].name);
 	    	printf("\t\t\t %ld",user[i].phoneNo);
 	    	printf("\t\t\t %ld",user[i].idNo);
-	    	break;
-
 			return;
 		}
 		
