@@ -522,7 +522,7 @@ void takeBook()
 					user[i].submitmonth=lastMonth;
 					user[i].submityear=lastYear;
 				printf("\n\n\t\t@@@@@@@@@@@@@@ \033[1;36mLEND BOOK\033[0m @@@@@@@@@@@");
-				 printf("\n\n\t\t%s have succesfull Lended the book ",user[i]);	
+				 printf("\n\n\t\t%s have succesfull Lended the book ",user[i].name);	
 				 printf("\n\t\tBook issued Date: %d-%d-%d \n",presentDate,presentMonth,presentYear);	
                  printf("\t\tBook return Date: %d-%d-%d\n",lastDate,lastMonth,lastYear); 
 			     
@@ -642,7 +642,7 @@ void returnBook()
 
          }
        printf("\n\n\t\t@@@@@@@@@@@@@@\033[0;36m RETURN BOOK\033[0m @@@@@@@@@@@");
-	  printf("\n\n\t\t\033[0;32m%s have succesfull returned the book\033[0m \n",user[index]);   
+	  printf("\n\n\t\t\033[0;32m%s have succesfull returned the book\033[0m \n",user[index].name);   
   //To find the Fine
 	if(days==0)
 	   printf("\t\t\tYou are on time  !NO fine for you.......\n");
