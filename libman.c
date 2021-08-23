@@ -280,9 +280,9 @@ void addBook()
  	int i;
  	
  	printf("\n\n\n\n\t\t\t\t\t@@@@@@@@@@@@@@@@ \033[1;32mBooks Detail\033[0m \033[1;37m @@@@@@@@@@@@@@@@@@");
- 	printf("\n\n\t\t-------------------------------------------------------------------------");
-    printf("\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages\033[0m");
-    printf("\n\n\t\t--------------------------------------------------------------------------\n");
+ 	printf("\n\n\t\t-------------------------------------------------------------------------------------");
+    printf("\n\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages\033[0m");
+    printf("\n\n\t\t--------------------------------------------------------------------------------------\n");
 
     for(i=0;i< countBook;i++)
     { 
@@ -310,11 +310,12 @@ void searchBook()
 		if(strcasecmp(book[i].title,btitle)==0)
 		{
 			
-			printf("\n\n\t\t######### \033[1;32mBooks Detail\033[0m ########");
+			printf("\n\n\t\t######### \033[1;32mBooks Detail\033[0m \033[1;37m########");
 			printf("\n\n\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author : %s",book[i].author);
 			printf("\n\t\t Book Price : %f",book[i].price);
 			printf("\n\t\t Book Page : %d",book[i].page);
+			printf("\033[0m");
 			flag++;
 		}
 			
@@ -323,7 +324,7 @@ void searchBook()
 	}
 	if(flag==-1)
 		{
-			printf("\033[1;31mThe above title book is not present \033[0m\n");
+			printf("\n\t\t\033[1;31mThe above title book is not present! \033[0m\n");
 		}
 } 
 
@@ -342,11 +343,13 @@ void removeBook()
 		if(strcasecmp(book[i].title,btitle)==0)
 		{
 			system("clear");
-			printf("\n\n\t\t ######## \033[1;31mRemove Book Detail\033[0m ########");
+			printf("\n\n\t\t ######## \033[1;31mRemove Book Detail\033[0m \033[1;37m########");
 			printf("\n\n\t\t Book Title : %s",book[i].title);
 			printf("\n\t\t Book Author  : %s",book[i].author);
 			printf("\n\t\tBook Price    : %f",book[i].price);
 			printf("\n\t\t Book Page    : %d\n",book[i].page);
+			printf("\033[0m");
+			printf("\n\n\t\t \033[1;32mBook successfully removed\033[0m");
 
 			for(j=i;j<countBook-1;j++)
 			{
@@ -362,7 +365,7 @@ void removeBook()
 	}
 	if(flag==-1)
 		{
-			printf("\033[1;31mThe above title book is not present\033[0m \n");
+			printf("\n\n\n\t\033[1;31mThe above  book is not found\033[0m \n");
 		}
 	
 }
@@ -406,7 +409,7 @@ void removeBook()
 		 
   	 
   	 }
-	   printf("\n\n\033[1;31mThe above title book is not present \033[0m\n");
+	   printf("\n\n\t\t\033[1;31mThe above title book is not present \033[0m\n");
 
   }
 //Function to show all users
