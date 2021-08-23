@@ -61,7 +61,7 @@ void main()
 { 
 	system("clear");
 	char space;
-	printf("\033[1;36m\t\t\tWELCOME TO LIBRARY \033[0m\n");
+	printf("\n\n\n\033[1;36m\t\t\tWELCOME TO LIBRARY \033[0m\n");
 
 
 // calling of admin_Login() function     
@@ -231,7 +231,7 @@ void addBook()
 {
 	system("clear");
 	
-	printf("\t\t\t\t********** \033[1;36mAdd New Book Detail\033[0m \033[1;37m**********\n");
+	printf("\n\t\t\t\t********** \033[1;36mAdd New Book Detail\033[0m \033[1;37m**********\n");
 
 	printf("\tEnter Book Title : ");
 	clean_stdin();
@@ -257,9 +257,9 @@ void addBook()
  {  system("clear");
  	int i;
  	
- 	printf("\n\n\t\t@@@@@@@@@@@@@@@@ \033[1;32mBooks Detail\033[0m @@@@@@@@@@@@@@@@");
- 	printf("\n\n\t\t-------------------------------------------------------------");
-    printf("\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages");
+ 	printf("\n\n\t\t@@@@@@@@@@@@@@@@ \033[1;32mBooks Detail\033[0m \033[1;37m @@@@@@@@@@@@@@@@");
+ 	printf("\n\n\t\t-------------------------------------------------------------------------");
+    printf("\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages\033[0m");
     printf("\n\n\t\t--------------------------------------------------------------\n");
 
     for(i=0;i< countBook;i++)
@@ -279,9 +279,9 @@ void addBook()
  {  system("clear");
  	int i;
  	
- 	printf("\n\n\t\t\t\t\t@@@@@@@@@@@@@@@@ \033[1;32mBooks Detail\033[0m @@@@@@@@@@@@@@@@@@");
+ 	printf("\n\n\n\n\t\t\t\t\t@@@@@@@@@@@@@@@@ \033[1;32mBooks Detail\033[0m \033[1;37m @@@@@@@@@@@@@@@@@@");
  	printf("\n\n\t\t-------------------------------------------------------------------------");
-    printf("\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages");
+    printf("\n\t\t Book Title \t\t Book Author \t\t Book Price \t\t Book Pages\033[0m");
     printf("\n\n\t\t--------------------------------------------------------------------------\n");
 
     for(i=0;i< countBook;i++)
